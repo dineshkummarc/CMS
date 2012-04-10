@@ -1,0 +1,56 @@
+body {
+    background:#000;
+}
+#wrapper  {
+    width:800px;
+    background:#FFE;
+    padding:10px;
+    margin-left:250px;
+    position:absolute;
+    top:45px;
+    border-radius:10px;
+}
+#header {
+    position:relative;
+    background:#6699ff 0 0 repeat;
+    height:100px;
+    border-radius:10px;
+    -moz-box-shadow:#000 2px 2px 10px;
+}
+
+#content {
+    position: relative;
+    top: 10px;
+    background:#CCC;
+    padding:10px;
+}
+#header > ul li {
+    list-style-type:none;
+    color: black;
+    text-decoration:none;
+    float:left;
+    padding-right:10px;
+}
+h1 {
+    font-size:10px;
+    position: relative;
+    left:740px;
+    top:15px;
+    text-decoration:none;
+}
+#content {
+    list-style-type:none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.admin {
+    position:relative;
+    top:10px;
+    left:35px;
+}
+.form {
+    position: relative;
+    padding: 15px;
+    margin-left: 10px;
+}
+
