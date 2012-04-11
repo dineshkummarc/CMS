@@ -1,5 +1,4 @@
 <?php
-require 'connect.php';
 define('ADMIN_LOGIN','test');
 define('ADMIN_PASSWORD','test');
 
