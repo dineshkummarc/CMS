@@ -31,7 +31,7 @@
         <h2 class="admin">Admin Page</h2>
         <table>
             <tr><td>My Pages!</td><td><a href="new.php">New Page</a></td></tr>
-            <tr></tr>
+            <tr><td></td></tr>
             <? while ($row = $tableSql->fetch_assoc()): ?>
             <tr><td><?= $row['permalink'] ?></td><td><a href="edit.php?link=<?= $row['permalink']?>">Edit</a></td>
             <td><a href="delete.php?link=<?= $row['permalink']?>">Delete</a></td>

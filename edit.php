@@ -1,10 +1,18 @@
 <?php
+ require 'authenicate.php';
  require 'connect.php';
-$link = $_GET['link'];
-$sql = "SELECT * FROM CMS WHERE permalink = '{$link}'";
-$sql2 = "SELECT * FROM CMS";
-$resultLinks = $db->query($sql2);
-$result = $db->query($sql);
+ $link = $_GET['link'];
+    if (is_numeric($page)) {
+        header("Location:index.php");
+        exit();
+    }
+    else
+    {
+        $sql = "SELECT * FROM CMS WHERE permalink = '{$link}'";
+        $sql2 = "SELECT * FROM CMS";
+        $resultLinks = $db->query($sql2);
+        $result = $db->query($sql);
+    }
 ?>
 <?= '<?xml version="1.0" encoding="UTF-8"?>' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -54,8 +62,7 @@ $result = $db->query($sql);
 <body>
     <div id="wrapper">
        <div id="header">
-        <h2 class="admin">Our CMS</h2>
-        <h1><a href="index.php">Home</a></h1>
+        <h2>Our CMS</h2>
         <h1><a href="admin.php">admin</a></h1>
        </div>
         <div id="nav">
@@ -69,13 +76,15 @@ $result = $db->query($sql);
        <div id="content">
         <? $row = $result->fetch_assoc() ?>
         <form action="insert.php" method="post" class="form">
+            <fieldset>
             <label for="name">Page Name</label><br/>
             <input name="name" value="<?=$row['title']?>"/><br/>
             <label for="perma">Perma Link</label><br/>
             <input name="perma" value="<?=$row['permalink']?>"/><br/><br/>
             <label for="input">Page Content</label><br/>
-            <textarea cols=66 rows=8 name="content"><?= $row['content']?></textarea><br/><br/>
-            <input type="submit" value="Update" />  
+            <textarea cols="66" rows="8" name="content"><?= htmlentities($row['content']) ?></textarea><br/><br/>
+            <input type="submit" value="Update" />
+            </fieldset>
         </form>
        </div>
     </div>

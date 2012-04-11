@@ -1,4 +1,5 @@
 <?php
+ require 'authenicate.php';
  require 'connect.php';
  $sql = "SELECT * FROM CMS";
  $resultLinks = $db->query($sql);
@@ -63,13 +64,15 @@
        </div>
        <div id="content">
         <form action="post.php" method="post" class="form">
+            <fieldset>
             <label for="name">Page Name</label><br/>
             <input name="name"/><br/>
             <label for="perma">Perma Link</label><br/>
             <input name="perma"/><br/><br/>
             <label for="input">Page Content</label><br/>
-            <textarea cols=66 rows=8 name="content"></textarea><br/><br/>
+            <textarea cols="66" rows="8" name="content"></textarea><br/><br/>
             <input type="submit" value="Submit" />
+            </fieldset>
         </form>
        </div>
     </div>

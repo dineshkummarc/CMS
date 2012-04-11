@@ -1,12 +1,19 @@
 <?php
     require 'connect.php';
     $page = $_GET['link'];
-    $sql = "SELECT * FROM CMS WHERE permalink = '{$page}'";
-    $result = $db->query($sql);
-    $allSql = "SELECT * FROM CMS";
-    $navResult = $db->query($allSql);
-    $contentResult = $db->query($sql);
-
+    if(is_numeric($page)){
+      header("Location:index.php");
+    }
+    else
+    {
+        $sql = "SELECT * FROM CMS WHERE permalink = '{$page}'";
+        $result = $db->query($sql);
+        $allSql = "SELECT * FROM CMS";
+        $navResult = $db->query($allSql);
+        $contentResult = $db->query($sql);
+        
+    }
+    
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -31,7 +38,7 @@
        <div id="content">
             <? while ($content = $contentResult->fetch_assoc()): ?>
                 <h3><?= $content['title'] ?> </h3>
-                <p> <?= $content['content'] ?> </p>
+                <?= $content['content'] ?>
             <? endwhile ?>
        </div>
        <div id="footer">
